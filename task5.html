@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GameZone+ - Online Game Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: white;
+      color: black;
+    }
+
+    header {
+      background: linear-gradient(90deg, orange, black);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      color: orange;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    .home-intro {
+      background-color: #fefefe;
+      padding: 2rem;
+      text-align: center;
+      border: 2px solid orange;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+    }
+
+    .home-intro img {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .game-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: scale(1.03);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .game-info {
+      padding: 1rem;
+    }
+
+    .game-info h3 {
+      margin: 0 0 10px;
+      color: orange;
+    }
+
+    .game-info p {
+      margin: 5px 0;
+    }
+
+    .buy-btn {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 15px;
+      width: 100%;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background-color: orange;
+      color: black;
+    }
+
+    footer {
+      text-align: center;
+      background-color: black;
+      color: white;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>GameZone+</h1>
+    <p>Explore. Choose. Play.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">All Games</a>
+    <a href="#">Genres</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Home Section -->
+    <section class="home-intro">
+      <h2 style="color: orange;">Welcome to GameZone+</h2>
+      <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+        GameZone+ is your ultimate digital destination for the hottest online games. Explore action-packed adventures, high-speed racers, thrilling survival sagas, and more.
+      </p>
+      <img src="https://via.placeholder.com/800x300/FF8C00/000000?text=Welcome+to+GameZone%2B" alt="GameZone Banner" loading="lazy">
+      <p style="font-size: 1rem; color: #444; margin-top: 1rem;">
+        🚀 New titles every month • 🛒 Instant digital delivery • 💬 24/7 Support
+      </p>
+    </section>
+
+    <!-- Games Section -->
+    <h2 style="text-align: center;">Top Picks for You</h2>
+    <div class="games-grid" id="gamesContainer">
+      <!-- Games will load here -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 GameZone+. Designed during Apex Internship</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const games = [
+      { name: "Cyber Warrior", genre: "Action", price: "$49.99", img: "https://via.placeholder.com/300x160/000000/FFFFFF?text=Cyber+Warrior" },
+      { name: "Space Drift", genre: "Racing", price: "$29.99", img: "https://via.placeholder.com/300x160/FF4500/FFFFFF?text=Space+Drift" },
+      { name: "Fantasy Quest", genre: "Adventure", price: "$39.99", img: "https://via.placeholder.com/300x160/000000/FF8C00?text=Fantasy+Quest" },
+      { name: "Racing Heat", genre: "Racing", price: "$19.99", img: "https://via.placeholder.com/300x160/FFFFFF/000000?text=Racing+Heat" },
+      { name: "Pixel Brawler", genre: "Fighting", price: "$25.99", img: "https://via.placeholder.com/300x160/FFA500/000000?text=Pixel+Brawler" },
+      { name: "Haunted Valley", genre: "Horror", price: "$44.99", img: "https://via.placeholder.com/300x160/111111/FFA500?text=Haunted+Valley" },
+      { name: "Stealth Ops", genre: "Stealth", price: "$34.99", img: "https://via.placeholder.com/300x160/333333/FFFFFF?text=Stealth+Ops" },
+      { name: "Island Survival", genre: "Survival", price: "$27.99", img: "https://via.placeholder.com/300x160/FF8C00/000000?text=Island+Survival" },
+    ];
+
+    const container = document.getElementById('gamesContainer');
+
+    games.forEach(game => {
+      const card = document.createElement('div');
+      card.className = 'game-card';
+      card.innerHTML = `
+        <img src="${game.img}" alt="${game.name}" loading="lazy">
+        <div class="game-info">
+          <h3>${game.name}</h3>
+          <p><strong>Genre:</strong> ${game.genre}</p>
+          <p><strong>Price:</strong> ${game.price}</p>
+          <button class="buy-btn" onclick="buy('${game.name}', '${game.price}')">Buy Now</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    function buy(name, price) {
+      alert(`Thanks for purchasing "${name}" for ${price}.\n(This is a demo only.)`);
+    }
+  </script>
+</body>
+</html>
